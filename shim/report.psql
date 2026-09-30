@@ -1,0 +1,7 @@
+-- Appended after every test.sql: print the outcome for run.sh to parse.
+reset role;
+select
+  coalesce(current_setting('casebook.exploited', true), '') = 'true' as exploited,
+  coalesce(current_setting('casebook.legit', true), '')     = 'true' as legit
+\gset
+\echo RESULT exploited=:exploited legit=:legit
